@@ -26,6 +26,8 @@ typedef enum {
 
 @property(nonatomic) BOOL enabled;
 
+@property(readonly, nonatomic) CGRect coveredArea;
+
 /** Handling fill mode
  
  @param redComponent Red component for background color

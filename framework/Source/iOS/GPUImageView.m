@@ -263,6 +263,8 @@
         imageVertices[5] = heightScaling;
         imageVertices[6] = widthScaling;
         imageVertices[7] = heightScaling;
+
+	 _coveredArea = insetRect;
     });
     
 //    static const GLfloat imageVertices[] = {
