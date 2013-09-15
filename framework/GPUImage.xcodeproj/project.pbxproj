@@ -352,6 +352,8 @@
 		C2EDA90715BB136D007CBA0F /* GPUImageHueFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EDA90515BB136D007CBA0F /* GPUImageHueFilter.m */; };
 		D443237A17C81C0C00204484 /* GPUImageMovieComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = D443237817C81C0C00204484 /* GPUImageMovieComposition.h */; };
 		D443237B17C81C0C00204484 /* GPUImageMovieComposition.m in Sources */ = {isa = PBXBuildFile; fileRef = D443237917C81C0C00204484 /* GPUImageMovieComposition.m */; };
+		F2148F2F17E5633100CC1A77 /* WooMultiplyBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = F2148F2D17E5633100CC1A77 /* WooMultiplyBlendFilter.h */; };
+		F2148F3017E5633100CC1A77 /* WooMultiplyBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2148F2E17E5633100CC1A77 /* WooMultiplyBlendFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -699,6 +701,8 @@
 		C2EDA90515BB136D007CBA0F /* GPUImageHueFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPUImageHueFilter.m; path = Source/GPUImageHueFilter.m; sourceTree = SOURCE_ROOT; };
 		D443237817C81C0C00204484 /* GPUImageMovieComposition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPUImageMovieComposition.h; path = Source/GPUImageMovieComposition.h; sourceTree = SOURCE_ROOT; };
 		D443237917C81C0C00204484 /* GPUImageMovieComposition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPUImageMovieComposition.m; path = Source/GPUImageMovieComposition.m; sourceTree = SOURCE_ROOT; };
+		F2148F2D17E5633100CC1A77 /* WooMultiplyBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WooMultiplyBlendFilter.h; path = Source/WooMultiplyBlendFilter.h; sourceTree = SOURCE_ROOT; };
+		F2148F2E17E5633100CC1A77 /* WooMultiplyBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WooMultiplyBlendFilter.m; path = Source/WooMultiplyBlendFilter.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,6 +818,8 @@
 		BC1B715E14F4B04800ACA2AB /* Blends */ = {
 			isa = PBXGroup;
 			children = (
+				F2148F2D17E5633100CC1A77 /* WooMultiplyBlendFilter.h */,
+				F2148F2E17E5633100CC1A77 /* WooMultiplyBlendFilter.m */,
 				4686952D155AACAC0060BA43 /* GPUImageSourceOverBlendFilter.h */,
 				4686952E155AACAC0060BA43 /* GPUImageSourceOverBlendFilter.m */,
 				BCB6B85015041A920041703B /* GPUImageColorBurnBlendFilter.h */,
@@ -1348,6 +1354,7 @@
 				BCBC605716C8527C00B11741 /* GPUImageZoomBlurFilter.h in Headers */,
 				BC6C55401730679D00EB222D /* GPUImageLaplacianFilter.h in Headers */,
 				BCB030BE173400BC001A1A20 /* GPUImageThreeInputFilter.h in Headers */,
+				F2148F2F17E5633100CC1A77 /* WooMultiplyBlendFilter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1622,6 +1629,7 @@
 				BC6C55411730679D00EB222D /* GPUImageLaplacianFilter.m in Sources */,
 				BCB030BF173400BC001A1A20 /* GPUImageThreeInputFilter.m in Sources */,
 				D443237B17C81C0C00204484 /* GPUImageMovieComposition.m in Sources */,
+				F2148F3017E5633100CC1A77 /* WooMultiplyBlendFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
