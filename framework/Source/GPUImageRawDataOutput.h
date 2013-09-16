@@ -36,6 +36,7 @@ typedef struct GPUByteColorVector GPUByteColorVector;
 #endif
 
 @property(readonly) GLubyte *rawBytesForImage;
+- (void *)rawBytesForImageVoid;
 @property(nonatomic, copy) void(^newFrameAvailableBlock)(void);
 @property(nonatomic) BOOL enabled;
 
@@ -45,7 +46,7 @@ typedef struct GPUByteColorVector GPUByteColorVector;
 // Data access
 - (GPUByteColorVector)colorAtLocation:(CGPoint)locationInImage;
 - (NSUInteger)bytesPerRowInOutput;
-- (void *)rawBytesForImageVoid;
+
 
 - (void)setImageSize:(CGSize)newImageSize;
 
