@@ -460,6 +460,11 @@
     }
 }
 
+- (void *)rawBytesForImageVoid;
+{
+    return (void *) [self rawBytesForImage];
+}
+
 - (NSUInteger)bytesPerRowInOutput;
 {
     if ([GPUImageContext supportsFastTextureUpload]) 

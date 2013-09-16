@@ -45,6 +45,7 @@ typedef struct GPUByteColorVector GPUByteColorVector;
 // Data access
 - (GPUByteColorVector)colorAtLocation:(CGPoint)locationInImage;
 - (NSUInteger)bytesPerRowInOutput;
+- (void *)rawBytesForImageVoid;
 
 - (void)setImageSize:(CGSize)newImageSize;
 
