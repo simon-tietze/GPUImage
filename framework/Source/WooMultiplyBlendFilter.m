@@ -21,7 +21,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
                             maskColorOrig.b * colorTransform[2];
     lowp vec4  maskColor =  mix(transformedColor,
                                 maskColorOrig,
-                                max(0, 20.0 * (whiteness - 0.95));
+                                max(0, 20.0 * (whiteness - 0.95)));
     maskColor.a = maskColorOrig.a;
 
     lowp vec4 linearFaceColor = faceColor;
@@ -29,11 +29,9 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 	lowp vec4 lumaAxis = vec4(0.299, 0.587, 0.114, 0);
     lowp float faceLuma  = dot(linearFaceColor, lumaAxis);
 
-    lowp vec4 blendColor = maskColor.a * clamp(1.0 * faceLuma,0.0,1.0) * maskColor; //+ (1.0 - maskColor.a) * linearFaceColor;
+    lowp vec4 blendColor = maskColor.a * clamp(1.0 * faceLuma,0.0,1.0) * maskColor;
     lowp vec4 gammaBlendColor = pow(blendColor, lowp vec4(1.0/2.2));    
  	gl_FragColor = gammaBlendColor;
-    //lowp vec4 white = vec4(1, 1, 1, 1);
- 	//gl_FragColor = faceLuma * white;
  }
 );
 
