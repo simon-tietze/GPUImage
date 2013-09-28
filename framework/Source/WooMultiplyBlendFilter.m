@@ -15,8 +15,8 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     lowp vec4 maskColorOrig = texture2D(inputImageTexture2, textureCoordinate2);
 
 
-    lowp float whiteness = (maskColorOrig.r + maskColorOrig.g + maskColorOrig.b) / 3.0; 
-    vec4 transformedColor = maskColorOrig.r * colorTransform[0] +
+    midp float whiteness = (maskColorOrig.r + maskColorOrig.g + maskColorOrig.b) / 3.0; 
+    lowp vec4 transformedColor = maskColorOrig.r * colorTransform[0] +
                             maskColorOrig.g * colorTransform[1] +
                             maskColorOrig.b * colorTransform[2];
     lowp vec4  maskColor =  mix(transformedColor,
