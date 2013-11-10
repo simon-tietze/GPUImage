@@ -8,6 +8,11 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
  uniform sampler2D inputImageTexture;
  uniform sampler2D inputImageTexture2;
  uniform lowp mat4 colorTransform;
+
+ uniform lowp float lumaPower;
+ uniform lowp float lumaMult;
+ uniform lowp float lumaBase;
+ uniform lowp float gamma;
  
  void main()
  {
@@ -17,27 +22,32 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 
     highp float whiteness = (maskColorOrig.r + maskColorOrig.g + maskColorOrig.b) / 3.0; 
     lowp vec4 transformedColor = maskColorOrig.r * colorTransform[0] +
-                            maskColorOrig.g * colorTransform[1] +
-                            maskColorOrig.b * colorTransform[2];
+                                 maskColorOrig.g * colorTransform[1] +
+                                 maskColorOrig.b * colorTransform[2];
+    // don't transform colors close to white
     lowp vec4  maskColor =  mix(transformedColor,
                                 maskColorOrig,
                                 max(0.0, 20.0 * (whiteness - 0.95)));
     maskColor.a = maskColorOrig.a;
 
     lowp vec4 linearFaceColor = faceColor;
-    linearFaceColor.rgb = pow(linearFaceColor.rgb, lowp vec3(2.2));
+    linearFaceColor.rgb = pow(linearFaceColor.rgb, lowp vec3(gamma));
 	lowp vec4 lumaAxis = vec4(0.299, 0.587, 0.114, 0);
     lowp float faceLuma  = dot(linearFaceColor, lumaAxis);
+    faceLuma = lumaBase + pow(faceLuma, lumaPower) * lumaMult;
 
-    lowp vec4 blendColor = maskColor.a * clamp(1.0 * faceLuma,0.0,1.0) * maskColor;
-    lowp vec4 gammaBlendColor = pow(blendColor, lowp vec4(1.0/2.2));    
+    lowp vec4 blendColor = maskColor.a * clamp(faceLuma, 0.0, 1.0) * maskColor;
+    lowp vec4 gammaBlendColor = pow(blendColor, lowp vec4(1.0/gamma));    
  	gl_FragColor = gammaBlendColor;
  }
 );
 
 @implementation WooMultiplyBlendFilter
 
-@synthesize luminanceTransfer = _luminanceTransfer;
+@synthesize lumaPower = _lumaPower;
+@synthesize lumaMult = _lumaMult;
+@synthesize lumaBase = _lumaBase;
+@synthesize gamma = _gamma;
 
 - (id)init;
 {
@@ -55,6 +65,18 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
         {0.f, 0.f, 0.f, 1.f}
     };
 	[self setMatrix4f:colorTransform forUniform:colorTransformUniform program:filterProgram];
+
+    lumaPowerUniform = [filterProgram uniformIndex:@"lumaPower"];
+    self.lumaPower = 1.0;
+
+    lumaMultUniform = [filterProgram uniformIndex:@"lumaMult"];
+    self.lumaMult = 1.0;
+
+    lumaBaseUniform = [filterProgram uniformIndex:@"lumaBase"];
+    self.lumaBase = 0.0;
+
+    gammaUniform = [filterProgram uniformIndex:@"gamma"];
+    self.gamma = 2.2;
 
     return self;
 }
@@ -96,9 +118,28 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 }
 
 
-- (void)setLuminanceTransfer:(CGFloat)newValue;
+- (void)setLumaPower:(CGFloat)newValue;
 {
-    _luminanceTransfer = newValue;
+    _lumaPower = newValue;
+    [self setFloat:_lumaPower forUniform:lumaPowerUniform program:filterProgram];
+}
+
+- (void)setLumaMult:(CGFloat)newValue;
+{
+    _lumaMult = newValue;
+    [self setFloat:_lumaMult forUniform:lumaMultUniform program:filterProgram];
+}
+
+- (void)setLumaBase:(CGFloat)newValue;
+{
+    _lumaBase = newValue;
+    [self setFloat:_lumaBase forUniform:lumaBaseUniform program:filterProgram];
+}
+
+- (void)setGamma:(CGFloat)newValue;
+{
+    _gamma = newValue;
+    [self setFloat:_gamma forUniform:gammaUniform program:filterProgram];
 }
 
 
