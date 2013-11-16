@@ -37,6 +37,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     faceLuma = lumaBase + pow(faceLuma, lumaPower) * lumaMult;
 
     lowp vec4 blendColor = maskColor.a * clamp(faceLuma, 0.0, 1.0) * maskColor;
+    blendColor.a = maskColorOrig.a;
     lowp vec4 gammaBlendColor = pow(blendColor, lowp vec4(1.0/gamma));    
  	gl_FragColor = gammaBlendColor;
  }
