@@ -11,7 +11,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 
  uniform lowp float lumaPower;
  uniform lowp float lumaMult;
- uniform lowp float lumaBase;
+ uniform lowp float wireframe;
  uniform lowp float gamma;
  
  void main()
@@ -47,7 +47,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 
 @synthesize lumaPower = _lumaPower;
 @synthesize lumaMult = _lumaMult;
-@synthesize lumaBase = _lumaBase;
+@synthesize wireframe = _wireframe;
 @synthesize gamma = _gamma;
 
 - (id)init;
@@ -73,8 +73,8 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     lumaMultUniform = [filterProgram uniformIndex:@"lumaMult"];
     self.lumaMult = 1.0;
 
-    lumaBaseUniform = [filterProgram uniformIndex:@"lumaBase"];
-    self.lumaBase = 0.0;
+    wireframeUniform = [filterProgram uniformIndex:@"wireframe"];
+    self.wireframe = 0.0;
 
     gammaUniform = [filterProgram uniformIndex:@"gamma"];
     self.gamma = 2.2;
@@ -88,6 +88,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     v.four = 0;
 	colorTransform.one = v;
 	[self setMatrix4f:colorTransform forUniform:colorTransformUniform program:filterProgram];
+    NSLog(colorTransform);
 }
 
 - (UIColor *) color1 {
@@ -100,6 +101,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     v.four = 0;
     colorTransform.two = v;
     [self setMatrix4f:colorTransform forUniform:colorTransformUniform program:filterProgram];
+    NSLog(colorTransform);
 }
 
 - (UIColor *) color2 {
@@ -112,6 +114,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     v.four = 0;
     colorTransform.three = v;
     [self setMatrix4f:colorTransform forUniform:colorTransformUniform program:filterProgram];
+    NSLog(colorTransform);
 }
 
 - (UIColor *) color3 {
@@ -131,10 +134,10 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     [self setFloat:_lumaMult forUniform:lumaMultUniform program:filterProgram];
 }
 
-- (void)setLumaBase:(CGFloat)newValue;
+- (void)setWireframe:(CGFloat)newValue;
 {
-    _lumaBase = newValue;
-    [self setFloat:_lumaBase forUniform:lumaBaseUniform program:filterProgram];
+    _wireframe = newValue;
+    [self setFloat:_wireframe forUniform:wireframeUniform program:filterProgram];
 }
 
 - (void)setGamma:(CGFloat)newValue;
