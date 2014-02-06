@@ -7,7 +7,6 @@
 	
 	GLint lumaPowerUniform;
 	GLint lumaMultUniform;
-	GLint lumaBaseUniform;
 	GLint gammaUniform;
 }
 
@@ -16,7 +15,6 @@
 @property (readwrite, nonatomic, copy) UIColor* color3;
 @property (readwrite, nonatomic) CGFloat lumaPower;
 @property (readwrite, nonatomic) CGFloat lumaMult;
-@property (readwrite, nonatomic) CGFloat lumaBase;
 @property (readwrite, nonatomic) CGFloat gamma;
 
 @end
