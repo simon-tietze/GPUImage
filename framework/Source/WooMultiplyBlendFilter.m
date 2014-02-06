@@ -88,10 +88,10 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     v.four = 0;
 	colorTransform.one = v;
 	[self setMatrix4f:colorTransform forUniform:colorTransformUniform program:filterProgram];
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.one.one, colorTransform.one.two, colorTransform.one.three, colorTransform.one.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.two.one, colorTransform.two.two, colorTransform.two.three, colorTransform.two.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.three.one, colorTransform.three.two, colorTransform.three.three, colorTransform.three.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.four.one, colorTransform.four.two, colorTransform.four.three, colorTransform.four.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.one.one, colorTransform.one.two, colorTransform.one.three, colorTransform.one.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.two.one, colorTransform.two.two, colorTransform.two.three, colorTransform.two.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.three.one, colorTransform.three.two, colorTransform.three.three, colorTransform.three.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.four.one, colorTransform.four.two, colorTransform.four.three, colorTransform.four.four);
 }
 
 - (UIColor *) color1 {
@@ -104,10 +104,10 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     v.four = 0;
     colorTransform.two = v;
     [self setMatrix4f:colorTransform forUniform:colorTransformUniform program:filterProgram];
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.one.one, colorTransform.one.two, colorTransform.one.three, colorTransform.one.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.two.one, colorTransform.two.two, colorTransform.two.three, colorTransform.two.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.three.one, colorTransform.three.two, colorTransform.three.three, colorTransform.three.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.four.one, colorTransform.four.two, colorTransform.four.three, colorTransform.four.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.one.one, colorTransform.one.two, colorTransform.one.three, colorTransform.one.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.two.one, colorTransform.two.two, colorTransform.two.three, colorTransform.two.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.three.one, colorTransform.three.two, colorTransform.three.three, colorTransform.three.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.four.one, colorTransform.four.two, colorTransform.four.three, colorTransform.four.four);
 }
 
 - (UIColor *) color2 {
@@ -120,10 +120,10 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     v.four = 0;
     colorTransform.three = v;
     [self setMatrix4f:colorTransform forUniform:colorTransformUniform program:filterProgram];
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.one.one, colorTransform.one.two, colorTransform.one.three, colorTransform.one.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.two.one, colorTransform.two.two, colorTransform.two.three, colorTransform.two.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.three.one, colorTransform.three.two, colorTransform.three.three, colorTransform.three.four);
-    NSLog(@"colorTransform:\t%f\t%f\t%f", colorTransform.four.one, colorTransform.four.two, colorTransform.four.three, colorTransform.four.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.one.one, colorTransform.one.two, colorTransform.one.three, colorTransform.one.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.two.one, colorTransform.two.two, colorTransform.two.three, colorTransform.two.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.three.one, colorTransform.three.two, colorTransform.three.three, colorTransform.three.four);
+    NSLog(@"colorTransform:\t%f\t%f\t%f\t%f", colorTransform.four.one, colorTransform.four.two, colorTransform.four.three, colorTransform.four.four);
 }
 
 - (UIColor *) color3 {
