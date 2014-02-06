@@ -11,7 +11,6 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 
  uniform lowp float lumaPower;
  uniform lowp float lumaMult;
- uniform lowp float wireframe;
  uniform lowp float gamma;
  
  void main()
@@ -34,7 +33,7 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
     linearFaceColor.rgb = pow(linearFaceColor.rgb, lowp vec3(gamma));
 	lowp vec4 lumaAxis = vec4(0.299, 0.587, 0.114, 0);
     lowp float faceLuma  = dot(linearFaceColor, lumaAxis);
-    faceLuma = lumaBase + pow(faceLuma, lumaPower) * lumaMult;
+    faceLuma = pow(faceLuma, lumaPower) * lumaMult;
 
     lowp vec4 blendColor = maskColor.a * clamp(faceLuma, 0.0, 1.0) * maskColor;
     blendColor.a = maskColorOrig.a;
@@ -47,7 +46,6 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 
 @synthesize lumaPower = _lumaPower;
 @synthesize lumaMult = _lumaMult;
-@synthesize wireframe = _wireframe;
 @synthesize gamma = _gamma;
 
 - (id)init;
@@ -72,9 +70,6 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 
     lumaMultUniform = [filterProgram uniformIndex:@"lumaMult"];
     self.lumaMult = 1.0;
-
-    wireframeUniform = [filterProgram uniformIndex:@"wireframe"];
-    self.wireframe = 0.0;
 
     gammaUniform = [filterProgram uniformIndex:@"gamma"];
     self.gamma = 2.2;
@@ -141,12 +136,6 @@ NSString *const kWooMultiplyBlendFragmentShaderString = SHADER_STRING
 {
     _lumaMult = newValue;
     [self setFloat:_lumaMult forUniform:lumaMultUniform program:filterProgram];
-}
-
-- (void)setWireframe:(CGFloat)newValue;
-{
-    _wireframe = newValue;
-    [self setFloat:_wireframe forUniform:wireframeUniform program:filterProgram];
 }
 
 - (void)setGamma:(CGFloat)newValue;
